@@ -1,7 +1,19 @@
-/* @refresh reload */
 import { render } from 'solid-js/web';
+import { Router, useRoutes } from 'solid-app-router';
 
-import './index.css';
-import App from './App';
+import { routes } from './routes';
+import { Nav } from './components/nav';
 
-render(() => <App />, document.getElementById('root') as HTMLElement);
+const Routes = useRoutes(routes);
+
+function App() {
+  return (
+    <Router>
+      <Nav />
+      <Routes />
+    </Router>
+  );
+}
+
+const rootEl = document.getElementById('root');
+if (rootEl) render(App, rootEl);
